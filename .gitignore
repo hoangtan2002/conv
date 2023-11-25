@@ -1,0 +1,38 @@
+# Compiled output files
+*.sof
+*.rbf
+*.bit
+*.jic
+*.aof
+*.asm
+*.sym
+*.hex
+*.lst
+*.fit
+*.sdc
+
+# Quartus generated folder
+output_files/*
+incremental_db/*
+db/*
+db_incremental/*
+simulation/*
+
+# Simulation output files
+*.sim
+*.wave
+*.coe
+*.vcd
+
+# Generated reports 
+*.html
+*.txt
+*.csv
+*.rpt
+
+# Temporary files
+*.tmp
+*.cache
+*.log
+*.bak
+*.bak~
