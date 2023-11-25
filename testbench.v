@@ -139,8 +139,8 @@ module testbench();
 		end
 		//Massive Block of Busy-waiting
 		else if (state==4'h3) begin
-			if (i<inRow-kerRow+2) begin
-				if (j<inCol-kerCol+2) begin
+			if (i<inRow-kerRow+1) begin
+				if (j<inCol-kerCol+1) begin
 					if (k<kerRow+1) begin
 						if (l<kerCol+1) begin
 							l=l+4'h1;
@@ -150,10 +150,10 @@ module testbench();
 								if (k==kerRow+1) begin
 									k=0;
 									j=j+4'h1;
-									if (j==inCol-kerCol+2) begin
+									if (j==inCol-kerCol+1) begin
 										j=0;
 										i=i+4'h1;
-										if(i==inRow-kerRow+2) begin
+										if(i==inRow-kerRow+1) begin
 											i=0;
 											j=0;
 											k=0;

@@ -79,8 +79,8 @@ module conv(
 		end
 		else if (state==4'h3) begin
 		//Convolution operation
-		if (i<inRow-kerRow+2) begin
-				if (j<inCol-kerCol+2) begin
+		if (i<inRow-kerRow+1) begin
+				if (j<inCol-kerCol+1) begin
 					if (k<kerRow+1) begin
 						if (l<kerCol+1) begin
 							accumulator = accumulator + inMatrixBuf[i+k][j+l]*kernelBuf[k][l];
@@ -93,10 +93,10 @@ module conv(
 									accumulator=16'h0;
 									k=4'h0;
 									j=j+4'h1;
-									if (j==inCol-kerCol+2) begin
+									if (j==inCol-kerCol+1) begin
 										j=0;
 										i=i+4'h1;
-										if(i==inRow-kerRow+2) begin
+										if(i==inRow-kerRow+1) begin
 											i=4'h0;
 											j=4'h0;
 											k=4'h0;
