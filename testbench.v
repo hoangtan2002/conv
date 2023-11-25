@@ -1,5 +1,4 @@
 `timescale 1ns/1ps
-/*TODO:Fix Processing section*/
 module testbench();
 	reg [7:0]kernelData[3:0][3:0]; 
 	reg [7:0]inMatrixData[5:0][5:0];
