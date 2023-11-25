@@ -7,7 +7,6 @@ module conv(
   input [3:0]kerCol,
   input clk,
   output reg[15:0]outMatrix);
-	
 	reg[5:0]a = 5'h0;
 	reg[5:0]b = 5'h0;
 	reg[3:0]i = 4'h0;
@@ -19,7 +18,6 @@ module conv(
 	reg[3:0]o = 4'h0;
 	reg[3:0]state = 4'h0;
 	reg[15:0]accumulator = 16'h0000;
-	//reg[15:0]accumulator = 16'h0;
 	reg[7:0]kernelBuf[15:0][15:0];
 	reg[7:0]inMatrixBuf[15:0][15:0];
 	reg[15:0]outMatrixBuf[15:0][15:0];
@@ -81,14 +79,14 @@ module conv(
 		//Convolution operation
 		if (i<inRow-kerRow+1) begin
 				if (j<inCol-kerCol+1) begin
-					if (k<kerRow+1) begin
+					if (k<kerRow) begin
 						if (l<kerCol+1) begin
 							accumulator = accumulator + inMatrixBuf[i+k][j+l]*kernelBuf[k][l];
 							l=l+4'h1;
 							if (l==kerCol+1) begin
 								l=0;
 								k=k+4'h1;
-								if (k==kerRow+1) begin
+								if (k==kerRow) begin
 									outMatrixBuf[i][j] = accumulator;
 									accumulator=16'h0;
 									k=4'h0;

@@ -140,13 +140,13 @@ module testbench();
 		else if (state==4'h3) begin
 			if (i<inRow-kerRow+1) begin
 				if (j<inCol-kerCol+1) begin
-					if (k<kerRow+1) begin
+					if (k<kerRow) begin
 						if (l<kerCol+1) begin
 							l=l+4'h1;
 							if (l==kerCol+1) begin
 								l=0;
 								k=k+4'h1;
-								if (k==kerRow+1) begin
+								if (k==kerRow) begin
 									k=0;
 									j=j+4'h1;
 									if (j==inCol-kerCol+1) begin
@@ -158,7 +158,7 @@ module testbench();
 											k=0;
 											l=0;
 											$display("Out matrix 1:");
-											state=4'h5;
+											state=4'h4;
 										end
 									end
 								end
@@ -170,16 +170,6 @@ module testbench();
 		end
 		//Output data
 		else if (state==4'h4) begin
-			if (o<4'h2) begin
-				o=o+1;
-				if (o==4'h1) begin
-					o=4'h0;
-					$display("Out matrix 1:");
-					state=4'h5;
-				end
-			end
-		end
-		else if (state==4'h5) begin
 			if (m<inRow-kerRow+1) begin
 				if (n<inCol-kerCol+1) begin
 					$write("%d ",outMatrix);
