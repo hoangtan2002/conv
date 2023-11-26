@@ -88,19 +88,19 @@ module testbench();
 	initial begin 
 		clk=0;
 		for (p=0;p<clkcycle;p=p+1) begin
-			#20 clk = ~clk;
+			#5 clk = ~clk;
 		end
 	end
 	always@(posedge clk) begin
 		if (state==4'h0) begin
-			if (m<inRow+1) begin
+			if (m<inRow) begin
 				if (n<inCol+1) begin
 					inMatrix = inMatrixData[m][n];
 					n=n+4'h1;
 					if (n==inCol+1) begin
 						n = 4'h0;
 						m = m + 4'h1;
-						if (m==inRow+1) begin 
+						if (m==inRow) begin 
 							state = 4'h1;
 							m=4'h0;
 							n=4'h0;
@@ -111,14 +111,14 @@ module testbench();
 		end
 		else if (state==4'h1) begin
 			//stream in kernel
-			if(m<kerRow+1) begin
+			if(m<kerRow) begin
 				if(n<kerCol+1) begin
 					kernel = kernelData[m][n];
 					n = n + 4'h1;
 					if(n==kerCol+1) begin
 						n=4'h0;
 						m=m+1;
-						if(m==kerRow+1) begin
+						if(m==kerRow) begin
 							m=4'h0;
 							n=4'h0;
 							state=4'h2;

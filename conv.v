@@ -37,14 +37,14 @@ module conv(
 	always@(posedge clk) begin
 		//Stream in data 
 		if (state==4'h0) begin
-			if (m<inRow+1) begin
+			if (m<inRow) begin
 				if (n<inCol+1) begin
 					inMatrixBuf[m][n] = inMatrix;
 					n=n+4'h1;
 					if (n==inCol+1) begin
 						n = 4'h0;
 						m = m + 4'h1;
-						if (m==inRow+1) begin 
+						if (m==inRow) begin 
 							state = 4'h1;
 							m=4'h0;
 							n=4'h0;
@@ -55,14 +55,14 @@ module conv(
 		end
 		else if (state==4'h1) begin
 			//stream in kernel
-			if(m<kerRow+1) begin
+			if(m<kerRow) begin
 				if(n<kerCol+1) begin
 					kernelBuf[m][n] = kernel;
 					n = n + 4'h1;
 					if(n==kerCol+1) begin
 						n=4'h0;
 						m=m+4'h1;
-						if(m==kerRow+1) begin
+						if(m==kerRow) begin
 							m=4'h0;
 							n=4'h0;
 							i=4'h0;
